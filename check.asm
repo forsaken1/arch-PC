@@ -2,11 +2,12 @@ include \masm32\include\masm32rt.inc
 
 .data
     fo      db '%d', 13, 10, 0
+    fend    db 13, 10, 0
 
 .code
 
 start:
-
+    ; MUL
     mov al, 15
     mov bl, 9
     mul bl
@@ -32,16 +33,22 @@ start:
     mul bl
     invoke crt_printf, addr fo, ax
 
-    mov al, 134
+    invoke crt_printf, addr fend
+
+    ; DIV
+    mov ax, 134
     mov bl, 111
     div bl
     invoke crt_printf, addr fo, al
 
-    mov al, 134
+    mov ax, 134
     mov bl, 111
     div bl
     invoke crt_printf, addr fo, ah
 
+    invoke crt_printf, addr fend
+
+    ; IMUL
     mov al, 12
     mov bl, 2
     imul bl
@@ -67,22 +74,45 @@ start:
     imul bl
     invoke crt_printf, addr fo, ax
 
-    mov al, -127
+    invoke crt_printf, addr fend
+
+    ; IDIV
+    mov ax, 127
     mov bl, 50
     idiv bl
     invoke crt_printf, addr fo, al
 
-    mov al, -127
+    mov ax, 127
     mov bl, 50
     idiv bl
     invoke crt_printf, addr fo, ah
 
-    mov al, 127
+    mov ax, -127
+    mov bl, 50
+    idiv bl
+    invoke crt_printf, addr fo, al
+
+    mov ax, -127
+    mov bl, 50
+    idiv bl
+    invoke crt_printf, addr fo, ah
+
+    mov ax, 127
     mov bl, -50
     idiv bl
     invoke crt_printf, addr fo, al
 
-    mov al, 127
+    mov ax, 127
+    mov bl, -50
+    idiv bl
+    invoke crt_printf, addr fo, ah
+
+    mov ax, -127
+    mov bl, -50
+    idiv bl
+    invoke crt_printf, addr fo, al
+
+    mov ax, -127
     mov bl, -50
     idiv bl
     invoke crt_printf, addr fo, ah
