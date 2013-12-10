@@ -46,6 +46,16 @@ start:
     div bl
     invoke crt_printf, addr fo, ah
 
+    mov ax, 134
+    mov bl, -111
+    div bl
+    invoke crt_printf, addr fo, al
+
+    mov ax, 134
+    mov bl, -111
+    div bl
+    invoke crt_printf, addr fo, ah
+
     invoke crt_printf, addr fend
 
     ; IMUL
